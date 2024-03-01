@@ -1,0 +1,356 @@
+mysql> create database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create database sample;
+ERROR 1007 (HY000): Can't create database 'sample'; database exists
+mysql> use sample
+Database changed
+mysql> create table students(id int,name varchar(100),age int);
+Query OK, 0 rows affected (1.73 sec)
+
+mysql> insert into values(1,raj,20);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values(1,raj,20)' at line 1
+mysql> insert into students values(1,raju,20);
+ERROR 1054 (42S22): Unknown column 'raju' in 'field list'
+mysql> insert into students values(1,amal,20);
+ERROR 1054 (42S22): Unknown column 'amal' in 'field list'
+mysql> insert into students value(1,amal,20);
+ERROR 1054 (42S22): Unknown column 'amal' in 'field list'
+mysql> insert into students values('1','amal','20');
+Query OK, 1 row affected (0.18 sec)
+
+mysql> insert into students values('2','athul','25');
+Query OK, 1 row affected (0.30 sec)
+
+mysql> insert into students values('3','anu','22');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into students values('4','akash','19');
+Query OK, 1 row affected (0.18 sec)
+
+mysql> insert into students values('5','robin sakariya','19');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into students values('6','abhay','23');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into students values('7','roy','26');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into students values('8','arjun','26');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into students values('9','vrun','25');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into students values('10','salah','24');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select* from students;
++------+----------------+------+
+| id   | name           | age  |
++------+----------------+------+
+|    1 | amal           |   20 |
+|    2 | athul          |   25 |
+|    3 | anu            |   22 |
+|    4 | akash          |   19 |
+|    5 | robin sakariya |   19 |
+|    6 | abhay          |   23 |
+|    7 | roy            |   26 |
+|    8 | arjun          |   26 |
+|    9 | vrun           |   25 |
+|   10 | salah          |   24 |
++------+----------------+------+
+10 rows in set (0.00 sec)
+
+mysql> alter table students add column department varchar(10);
+Query OK, 0 rows affected (1.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> update students set department='mca';
+Query OK, 10 rows affected (0.13 sec)
+Rows matched: 10  Changed: 10  Warnings: 0
+
+mysql> select* from students;
++------+----------------+------+------------+
+| id   | name           | age  | department |
++------+----------------+------+------------+
+|    1 | amal           |   20 | mca        |
+|    2 | athul          |   25 | mca        |
+|    3 | anu            |   22 | mca        |
+|    4 | akash          |   19 | mca        |
+|    5 | robin sakariya |   19 | mca        |
+|    6 | abhay          |   23 | mca        |
+|    7 | roy            |   26 | mca        |
+|    8 | arjun          |   26 | mca        |
+|    9 | vrun           |   25 | mca        |
+|   10 | salah          |   24 | mca        |
++------+----------------+------+------------+
+10 rows in set (0.00 sec)
+
+mysql> update students set department='MCA' where id='1';
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update students set department='MCA' where id='2';
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update students set department='EEE' where id='3';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update students set department='ECE' where id='4';
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update students set department='CE' where id='5';
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update students set department='CES' where id='6';
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update students set department='CES' where id='7';
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update students set department='CES' where id='8';
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update students set department='CSE' where id='8';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update students set department='CSE' where id='7';
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update students set department='CSE' where id='6';
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update students set department='MECH' where id='9';
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update students set department='MECH' where id='10';
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select* from students;
++------+----------------+------+------------+
+| id   | name           | age  | department |
++------+----------------+------+------------+
+|    1 | amal           |   20 | MCA        |
+|    2 | athul          |   25 | MCA        |
+|    3 | anu            |   22 | EEE        |
+|    4 | akash          |   19 | ECE        |
+|    5 | robin sakariya |   19 | CE         |
+|    6 | abhay          |   23 | CSE        |
+|    7 | roy            |   26 | CSE        |
+|    8 | arjun          |   26 | CSE        |
+|    9 | vrun           |   25 | MECH       |
+|   10 | salah          |   24 | MECH       |
++------+----------------+------+------------+
+10 rows in set (0.00 sec)
+
+mysql> select* from students where id>5
+    -> select* from students where id>5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select* from students where id>5' at line 2
+mysql> select * from students where id>=5;
++------+----------------+------+------------+
+| id   | name           | age  | department |
++------+----------------+------+------------+
+|    5 | robin sakariya |   19 | CE         |
+|    6 | abhay          |   23 | CSE        |
+|    7 | roy            |   26 | CSE        |
+|    8 | arjun          |   26 | CSE        |
+|    9 | vrun           |   25 | MECH       |
+|   10 | salah          |   24 | MECH       |
++------+----------------+------+------------+
+6 rows in set (0.02 sec)
+
+mysql> select * from students where id<5;
++------+-------+------+------------+
+| id   | name  | age  | department |
++------+-------+------+------------+
+|    1 | amal  |   20 | MCA        |
+|    2 | athul |   25 | MCA        |
+|    3 | anu   |   22 | EEE        |
+|    4 | akash |   19 | ECE        |
++------+-------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from students where id<=5;
++------+----------------+------+------------+
+| id   | name           | age  | department |
++------+----------------+------+------------+
+|    1 | amal           |   20 | MCA        |
+|    2 | athul          |   25 | MCA        |
+|    3 | anu            |   22 | EEE        |
+|    4 | akash          |   19 | ECE        |
+|    5 | robin sakariya |   19 | CE         |
++------+----------------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from students where id>5;
++------+-------+------+------------+
+| id   | name  | age  | department |
++------+-------+------+------------+
+|    6 | abhay |   23 | CSE        |
+|    7 | roy   |   26 | CSE        |
+|    8 | arjun |   26 | CSE        |
+|    9 | vrun  |   25 | MECH       |
+|   10 | salah |   24 | MECH       |
++------+-------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from students where id>5 and id<10;
++------+-------+------+------------+
+| id   | name  | age  | department |
++------+-------+------+------------+
+|    6 | abhay |   23 | CSE        |
+|    7 | roy   |   26 | CSE        |
+|    8 | arjun |   26 | CSE        |
+|    9 | vrun  |   25 | MECH       |
++------+-------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from students where id>7 and id<10;
++------+-------+------+------------+
+| id   | name  | age  | department |
++------+-------+------+------------+
+|    8 | arjun |   26 | CSE        |
+|    9 | vrun  |   25 | MECH       |
++------+-------+------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select name from students where name like"%";
++----------------+
+| name           |
++----------------+
+| amal           |
+| athul          |
+| anu            |
+| akash          |
+| robin sakariya |
+| abhay          |
+| roy            |
+| arjun          |
+| vrun           |
+| salah          |
++----------------+
+10 rows in set (0.02 sec)
+
+mysql> select name from students where name like"a%";
++-------+
+| name  |
++-------+
+| amal  |
+| athul |
+| anu   |
+| akash |
+| abhay |
+| arjun |
++-------+
+6 rows in set (0.00 sec)
+
+mysql> select name from students where name like"r%";
++----------------+
+| name           |
++----------------+
+| robin sakariya |
+| roy            |
++----------------+
+2 rows in set (0.00 sec)
+
+mysql> select name from students where name like"r%";
++----------------+
+| name           |
++----------------+
+| robin sakariya |
+| roy            |
++----------------+
+2 rows in set (0.00 sec)
+
+mysql> select name from students where name like"_a%";
++-------+
+| name  |
++-------+
+| salah |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select from students where name like"_a%";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from students where name like"_a%"' at line 1
+mysql> select * from students where name like"_a%";
++------+-------+------+------------+
+| id   | name  | age  | department |
++------+-------+------+------------+
+|   10 | salah |   24 | MECH       |
++------+-------+------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from students where name like"_r%";
++------+-------+------+------------+
+| id   | name  | age  | department |
++------+-------+------+------------+
+|    8 | arjun |   26 | CSE        |
+|    9 | vrun  |   25 | MECH       |
++------+-------+------+------------+
+2 rows in set (0.02 sec)
+
+mysql> select * from students;
++------+----------------+------+------------+
+| id   | name           | age  | department |
++------+----------------+------+------------+
+|    1 | amal           |   20 | MCA        |
+|    2 | athul          |   25 | MCA        |
+|    3 | anu            |   22 | EEE        |
+|    4 | akash          |   19 | ECE        |
+|    5 | robin sakariya |   19 | CE         |
+|    6 | abhay          |   23 | CSE        |
+|    7 | roy            |   26 | CSE        |
+|    8 | arjun          |   26 | CSE        |
+|    9 | vrun           |   25 | MECH       |
+|   10 | salah          |   24 | MECH       |
++------+----------------+------+------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from students where name like"%a%";
++------+----------------+------+------------+
+| id   | name           | age  | department |
++------+----------------+------+------------+
+|    1 | amal           |   20 | MCA        |
+|    2 | athul          |   25 | MCA        |
+|    3 | anu            |   22 | EEE        |
+|    4 | akash          |   19 | ECE        |
+|    5 | robin sakariya |   19 | CE         |
+|    6 | abhay          |   23 | CSE        |
+|    8 | arjun          |   26 | CSE        |
+|   10 | salah          |   24 | MECH       |
++------+----------------+------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from students where name like"%r%";
++------+----------------+------+------------+
+| id   | name           | age  | department |
++------+----------------+------+------------+
+|    5 | robin sakariya |   19 | CE         |
+|    7 | roy            |   26 | CSE        |
+|    8 | arjun          |   26 | CSE        |
+|    9 | vrun           |   25 | MECH       |
++------+----------------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from students where name like"%y%";
++------+----------------+------+------------+
+| id   | name           | age  | department |
++------+----------------+------+------------+
+|    5 | robin sakariya |   19 | CE         |
+|    6 | abhay          |   23 | CSE        |
+|    7 | roy            |   26 | CSE        |
++------+----------------+------+------------+
+3 rows in set (0.00 sec)
