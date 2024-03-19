@@ -1,0 +1,451 @@
+ syntax to use near 'databseas' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| db1                |
+| information_schema |
+| mysql              |
+| new                |
+| performance_schema |
+| sakila             |
+| sample             |
+| sys                |
++--------------------+
+8 rows in set (0.38 sec)
+
+mysql> use sample;
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_sample |
++------------------+
+| constrain        |
+| employee         |
+| payment          |
+| person           |
+| person1          |
+| product          |
+| staff            |
+| staffview        |
+| stud1            |
+| student1         |
+| student2         |
+| student3         |
+| students         |
+| supplier         |
+| supply           |
++------------------+
+15 rows in set (0.68 sec)
+
+mysql> selsct * from employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selsct * from employee' at line 1
+mysql> select * from employee;
++--------+----------+-------------------+----------------+---------+--------+
+| emp_id | emp_name | emp_department    | emp_address    | emp_mob | salary |
++--------+----------+-------------------+----------------+---------+--------+
+|      1 | Arya     | software engineer | malappuram     |    9876 | NULL   |
+|      2 | Nisam    | Accountant        | Alakkathodi    |    9866 | NULL   |
+|      3 | Aleena   | marketting        | mankav         |    9846 | NULL   |
+|      4 | Mridul   | cashier           | ummalathur     |    9836 | NULL   |
+|      5 | Jabin    | salesman          | pantheerankavu |    9826 | NULL   |
+|      6 | Amal     | manager           | balusseri      |    9816 | NULL   |
++--------+----------+-------------------+----------------+---------+--------+
+6 rows in set (0.32 sec)
+
+mysql> select * from staff;
++------+--------+------+
+| id   | name   | age  |
++------+--------+------+
+|    1 | Nisam  |   21 |
+|    2 | Arya   |   21 |
+|    3 | Mridul |   21 |
++------+--------+------+
+3 rows in set (0.03 sec)
+
+mysql> use new;
+Database changed
+mysql> show tables;
++---------------+
+| Tables_in_new |
++---------------+
+| emp           |
+| employee      |
++---------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee;
+Empty set (0.32 sec)
+
+mysql> select * from emp;
++------+--------+-------------------+-------------+-----------------+----------+
+| ssn  | name   | dept              | projectname | projectlocation | salary   |
++------+--------+-------------------+-------------+-----------------+----------+
+| 1    | aswin  | hr                | abc         | koxhikode       |  123.000 |
+| 2    | abhay  | production,finace | azx         | wayanad         | 5000.000 |
+| 3    | fami   | hr                | asw         | karnataka       |     NULL |
+| 102  | athul  | finace            | qwe         | delhi           |     NULL |
+| 103  | salah  | manger            | network     | kunnamagalam    |     NULL |
+| 104  | akshay | ro                | finace      | puthiyara       |     NULL |
+| 105  | ashi   | sales             | application | puthiyara       |     NULL |
+| 106  | abhi   | developer         | aqt         | dubai           |     NULL |
+| 107  | hadiya | hr                | hjk         | tamilnadu       |     NULL |
+| 108  | fasin  | sales             | hjk         | goa             |     NULL |
++------+--------+-------------------+-------------+-----------------+----------+
+10 rows in set (2.03 sec)
+
+mysql> alter table emp set salary=6000.55 where id="3";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'set salary=6000.55 where id="3"' at line 1
+mysql> update table emp set salary=6000.55 where id="3";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table emp set salary=6000.55 where id="3"' at line 1
+mysql> update emp set salry=6000.55 where id="3";
+ERROR 1054 (42S22): Unknown column 'id' in 'where clause'
+mysql> update emp set salry=6000.55 where ssn="3";
+ERROR 1054 (42S22): Unknown column 'salry' in 'field list'
+mysql> update emp set salary=6000.55 where ssn="3";
+Query OK, 1 row affected (0.22 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update emp set salary7000.5 where ssn="102";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where ssn="102"' at line 1
+mysql> update emp set salary=7000.5 where ssn="102";
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update emp set salary=8000.5 where ssn="103";
+Query OK, 1 row affected (0.11 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update emp set salary=9000.5 where ssn="104";
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update emp set salary=3000.55 where ssn="105";
+Query OK, 1 row affected (0.09 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update emp set salary=3600.55 where ssn="105";
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update emp set salary=3700.55 where ssn="106";
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update emp set salary=4706.55 where ssn="107";
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++------+--------+-------------------+-------------+-----------------+----------+
+| ssn  | name   | dept              | projectname | projectlocation | salary   |
++------+--------+-------------------+-------------+-----------------+----------+
+| 1    | aswin  | hr                | abc         | koxhikode       |  123.000 |
+| 2    | abhay  | production,finace | azx         | wayanad         | 5000.000 |
+| 3    | fami   | hr                | asw         | karnataka       | 6000.550 |
+| 102  | athul  | finace            | qwe         | delhi           | 7000.500 |
+| 103  | salah  | manger            | network     | kunnamagalam    | 8000.500 |
+| 104  | akshay | ro                | finace      | puthiyara       | 9000.500 |
+| 105  | ashi   | sales             | application | puthiyara       | 3600.550 |
+| 106  | abhi   | developer         | aqt         | dubai           | 3700.550 |
+| 107  | hadiya | hr                | hjk         | tamilnadu       | 4706.550 |
+| 108  | fasin  | sales             | hjk         | goa             |     NULL |
++------+--------+-------------------+-------------+-----------------+----------+
+10 rows in set (0.00 sec)
+
+mysql> update emp set salary=7756.12 where ssn="108";
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++------+--------+-------------------+-------------+-----------------+----------+
+| ssn  | name   | dept              | projectname | projectlocation | salary   |
++------+--------+-------------------+-------------+-----------------+----------+
+| 1    | aswin  | hr                | abc         | koxhikode       |  123.000 |
+| 2    | abhay  | production,finace | azx         | wayanad         | 5000.000 |
+| 3    | fami   | hr                | asw         | karnataka       | 6000.550 |
+| 102  | athul  | finace            | qwe         | delhi           | 7000.500 |
+| 103  | salah  | manger            | network     | kunnamagalam    | 8000.500 |
+| 104  | akshay | ro                | finace      | puthiyara       | 9000.500 |
+| 105  | ashi   | sales             | application | puthiyara       | 3600.550 |
+| 106  | abhi   | developer         | aqt         | dubai           | 3700.550 |
+| 107  | hadiya | hr                | hjk         | tamilnadu       | 4706.550 |
+| 108  | fasin  | sales             | hjk         | goa             | 7756.120 |
++------+--------+-------------------+-------------+-----------------+----------+
+10 rows in set (0.01 sec)
+
+mysql> select salary from emp where salary between 6000 , 9000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', 9000' at line 1
+mysql> select salary from emp where salary between 6000,9000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',9000' at line 1
+mysql> select salary from emp where salary between 6000 and 9000;
++----------+
+| salary   |
++----------+
+| 6000.550 |
+| 7000.500 |
+| 8000.500 |
+| 7756.120 |
++----------+
+4 rows in set (0.02 sec)
+
+mysql> select * from emp where projectlocation in ('delhi','puthiyara');
++------+--------+--------+-------------+-----------------+----------+
+| ssn  | name   | dept   | projectname | projectlocation | salary   |
++------+--------+--------+-------------+-----------------+----------+
+| 102  | athul  | finace | qwe         | delhi           | 7000.500 |
+| 104  | akshay | ro     | finace      | puthiyara       | 9000.500 |
+| 105  | ashi   | sales  | application | puthiyara       | 3600.550 |
++------+--------+--------+-------------+-----------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from emp where dept in ('hr','finace','production');
++------+--------+--------+-------------+-----------------+----------+
+| ssn  | name   | dept   | projectname | projectlocation | salary   |
++------+--------+--------+-------------+-----------------+----------+
+| 1    | aswin  | hr     | abc         | koxhikode       |  123.000 |
+| 3    | fami   | hr     | asw         | karnataka       | 6000.550 |
+| 102  | athul  | finace | qwe         | delhi           | 7000.500 |
+| 107  | hadiya | hr     | hjk         | tamilnadu       | 4706.550 |
++------+--------+--------+-------------+-----------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where dept notin ('hr','finace','production');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'notin ('hr','finace','production')' at line 1
+mysql> select * from emp where dept not in ('hr','finace','production');
++------+--------+-------------------+-------------+-----------------+----------+
+| ssn  | name   | dept              | projectname | projectlocation | salary   |
++------+--------+-------------------+-------------+-----------------+----------+
+| 2    | abhay  | production,finace | azx         | wayanad         | 5000.000 |
+| 103  | salah  | manger            | network     | kunnamagalam    | 8000.500 |
+| 104  | akshay | ro                | finace      | puthiyara       | 9000.500 |
+| 105  | ashi   | sales             | application | puthiyara       | 3600.550 |
+| 106  | abhi   | developer         | aqt         | dubai           | 3700.550 |
+| 108  | fasin  | sales             | hjk         | goa             | 7756.120 |
++------+--------+-------------------+-------------+-----------------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select * from emp where salary not in (5000.000,7756.120);
++------+--------+-----------+-------------+-----------------+----------+
+| ssn  | name   | dept      | projectname | projectlocation | salary   |
++------+--------+-----------+-------------+-----------------+----------+
+| 1    | aswin  | hr        | abc         | koxhikode       |  123.000 |
+| 3    | fami   | hr        | asw         | karnataka       | 6000.550 |
+| 102  | athul  | finace    | qwe         | delhi           | 7000.500 |
+| 103  | salah  | manger    | network     | kunnamagalam    | 8000.500 |
+| 104  | akshay | ro        | finace      | puthiyara       | 9000.500 |
+| 105  | ashi   | sales     | application | puthiyara       | 3600.550 |
+| 106  | abhi   | developer | aqt         | dubai           | 3700.550 |
+| 107  | hadiya | hr        | hjk         | tamilnadu       | 4706.550 |
+| 108  | fasin  | sales     | hjk         | goa             | 7756.120 |
++------+--------+-----------+-------------+-----------------+----------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where salary  in (5000.000,7756.120);
++------+-------+-------------------+-------------+-----------------+----------+
+| ssn  | name  | dept              | projectname | projectlocation | salary   |
++------+-------+-------------------+-------------+-----------------+----------+
+| 2    | abhay | production,finace | azx         | wayanad         | 5000.000 |
++------+-------+-------------------+-------------+-----------------+----------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp group by dept;
++------+--------+-------------------+-------------+-----------------+----------+
+| ssn  | name   | dept              | projectname | projectlocation | salary   |
++------+--------+-------------------+-------------+-----------------+----------+
+| 1    | aswin  | hr                | abc         | koxhikode       |  123.000 |
+| 2    | abhay  | production,finace | azx         | wayanad         | 5000.000 |
+| 102  | athul  | finace            | qwe         | delhi           | 7000.500 |
+| 103  | salah  | manger            | network     | kunnamagalam    | 8000.500 |
+| 104  | akshay | ro                | finace      | puthiyara       | 9000.500 |
+| 105  | ashi   | sales             | application | puthiyara       | 3600.550 |
+| 106  | abhi   | developer         | aqt         | dubai           | 3700.550 |
++------+--------+-------------------+-------------+-----------------+----------+
+7 rows in set (0.01 sec)
+
+mysql> select name  from emp group by dept;
++--------+
+| name   |
++--------+
+| aswin  |
+| abhay  |
+| athul  |
+| salah  |
+| akshay |
+| ashi   |
+| abhi   |
++--------+
+7 rows in set (0.00 sec)
+
+mysql> selectcount( name)  from emp group by dept;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selectcount( name)  from emp group by dept' at line 1
+mysql> select count( name)  from emp group by dept;
++--------------+
+| count( name) |
++--------------+
+|            3 |
+|            1 |
+|            1 |
+|            1 |
+|            1 |
+|            2 |
+|            1 |
++--------------+
+7 rows in set (0.02 sec)
+
+mysql> select count( name),name  from emp group by dept;
++--------------+--------+
+| count( name) | name   |
++--------------+--------+
+|            3 | aswin  |
+|            1 | abhay  |
+|            1 | athul  |
+|            1 | salah  |
+|            1 | akshay |
+|            2 | ashi   |
+|            1 | abhi   |
++--------------+--------+
+7 rows in set (0.00 sec)
+
+mysql> select count( name),dept  from emp group by dept;
++--------------+-------------------+
+| count( name) | dept              |
++--------------+-------------------+
+|            3 | hr                |
+|            1 | production,finace |
+|            1 | finace            |
+|            1 | manger            |
+|            1 | ro                |
+|            2 | sales             |
+|            1 | developer         |
++--------------+-------------------+
+7 rows in set (0.00 sec)
+
+mysql> alter emp add primarykey(ssn);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'emp add primarykey(ssn)' at line 1
+mysql> alter table emp add primarykey(ssn);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(ssn)' at line 1
+mysql> alter table emp add primary key(ssn);
+Query OK, 0 rows affected (2.91 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| ssn             | varchar(20) | NO   | PRI | NULL    |       |
+| name            | varchar(20) | YES  |     | NULL    |       |
+| dept            | varchar(20) | YES  |     | NULL    |       |
+| projectname     | varchar(20) | YES  |     | NULL    |       |
+| projectlocation | varchar(20) | YES  |     | NULL    |       |
+| salary          | float(7,3)  | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+6 rows in set (0.10 sec)
+
+mysql> alter table emp drop primary key;
+Query OK, 10 rows affected (1.96 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> alter table emp add primary key(ssn);
+Query OK, 0 rows affected (1.96 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| ssn             | varchar(20) | NO   | PRI | NULL    |       |
+| name            | varchar(20) | YES  |     | NULL    |       |
+| dept            | varchar(20) | YES  |     | NULL    |       |
+| projectname     | varchar(20) | YES  |     | NULL    |       |
+| projectlocation | varchar(20) | YES  |     | NULL    |       |
+| salary          | float(7,3)  | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+6 rows in set (0.03 sec)
+
+mysql> alter table emp add primary key(ssn , not null);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'not null)' at line 1
+mysql> create table department(did int,dname varchar(20),dlocation varchar(20) priamry key(did));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'priamry key(did))' at line 1
+mysql> create table department(did int,dname varchar(20),dlocation varchar(20) priamrykey(did));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'priamrykey(did))' at line 1
+mysql> create table department(did int,dname varchar(20),dlocation varchar(20) primarykey(did));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'primarykey(did))' at line 1
+mysql> create table department(did int,dname varchar(20),dlocation varchar(20) primary key(did));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(did))' at line 1
+mysql> create table department(did int not null,dname varchar(20),dlocation varchar(20) primary key(did));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(did))' at line 1
+mysql> create table department(did int notnull,dname varchar(20),dlocation varchar(20) primary key(did));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'notnull,dname varchar(20),dlocation varchar(20) primary key(did))' at line 1
+mysql> create table department(did int primary key,dname varchar(20),dlocation varchar(20) );
+Query OK, 0 rows affected (1.73 sec)
+
+mysql> desc table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> des table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'des table' at line 1
+mysql> desc departyment;
+ERROR 1146 (42S02): Table 'new.departyment' doesn't exist
+mysql> desc departyment;
+ERROR 1146 (42S02): Table 'new.departyment' doesn't exist
+mysql> desc department;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| did       | int         | NO   | PRI | NULL    |       |
+| dname     | varchar(20) | YES  |     | NULL    |       |
+| dlocation | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.04 sec)
+
+mysql> inset into department values(1,'hr','aswin';)
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'inset into department values(1,'hr','aswin'' at line 1
+    -> inset into department values(1,'hr','aswin');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')
+inset into department values(1,'hr','aswin')' at line 1
+mysql> insert into department values(1,'hr','aswin');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into department values(2,'finace','aswin');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into department values(3,'sales','fami');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into department values(4,'prduction','athul');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into department values(5,'sales','abhay');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into department values(6,'hr','aksah');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into department values(7,'finace','aksahy');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into department values(8,'finace','diya');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into department values(9,'developer','ajisa');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into department values(10,'hr','sala');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select * from department;
++-----+-----------+-----------+
+| did | dname     | dlocation |
++-----+-----------+-----------+
+|   1 | hr        | aswin     |
+|   2 | finace    | aswin     |
+|   3 | sales     | fami      |
+|   4 | prduction | athul     |
+|   5 | sales     | abhay     |
+|   6 | hr        | aksah     |
+|   7 | finace    | aksahy    |
+|   8 | finace    | diya      |
+|   9 | developer | ajisa     |
+|  10 | hr        | sala      |
++-----+-----------+-----------+
+10 rows in set (0.00 sec)
