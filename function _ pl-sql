@@ -1,0 +1,43 @@
+CREATE FUNCTION su(num INT , numm INT)
+    -> RETURNS INT
+    -> BEGIN
+    ->      DECLARE fsum INT;
+    ->      SET fsum=num+numm;
+    ->      RETURN fsum;
+    -> END;
+    -> //
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELIMITER ;
+mysql> select su(1,56);
++----------+
+| su(1,56) |
++----------+
+|       57 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> CREATE FUNCTION area_circle(radius DOUBLE)
+    -> RETURNS DOUBLE
+    -> BEGIN
+    ->      DECLARE answer DOUBLE;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+mysql> DELIMITER ||
+mysql> CREATE FUNCTION area_circle(radius DOUBLE)
+    -> RETURNS DOUBLE
+    -> BEGIN
+    ->      DECLARE answer DOUBLE;
+    ->      SET answer=radius * 3.141;
+    ->      RETURN answer;
+    -> END;
+    -> ||
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select area_circle(20);
+    -> ||
++-----------------+
+| area_circle(20) |
++-----------------+
+|           62.82 |
++-----------------+
+1 row in set (0.00 sec)
